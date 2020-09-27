@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="form-horizontal">
+    <fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Name">Name</label>
+            <div class="col-md-4">
+                <input id="Name" name="Name" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Type">Type</label>
+            <div class="col-md-4">
+                <select id="Type" name="Type" class="form-control">
+                </select>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Update"></label>
+            <div class="col-md-8">
+                <button id="Update" name="Update" class="btn btn-primary">Update</button>
+                <button id="Cancel" name="Cancel" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<script src="/Scripts/edit.js"></script>
+

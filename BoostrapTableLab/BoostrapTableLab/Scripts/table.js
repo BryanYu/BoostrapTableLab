@@ -14,27 +14,10 @@
         ].join('')
     }
     var operateEvents = {
-        'click .remove': function (e, value, row, index) {
-            if (confirm("Are you sure delete this row?")) {
-                $.ajax({
-                    url: '/Home/Delete',
-                    data: {
-                        id: row.Id
-                    },
-                    method: 'post',
-                    success: function (data, textStatus, jqXHR) {
-                        if (data.status === 1) {
-                            alert("Delete OK");
-                            table.bootstrapTable('refresh');
-                        }
-                    }
-                });
-            }
-        },
-        'click. edit': function (e, value, row, index) {
-            showModal($(this).attr('title'), row)
-        }
+        'click .remove': Remove,
+        'click .edit': Edit
     };
+
     table.bootstrapTable({
         columns: [
             {
@@ -44,15 +27,38 @@
                 field: 'Name',
                 title: '名稱',
             }, {
-                field: 'Type',
+                field: 'TypeName',
                 title: '類型',
             }, {
                 field: 'operate',
                 formatter: operateFormatter,
                 events: operateEvents
-            }],
+            }
+        ],
         url: "/Home/Get",
         clickToSelect: true
-    })
+    });
+
+    function Remove(e, value, row, index) {
+        if (confirm("Are you sure delete this row?")) {
+            $.ajax({
+                url: '/Home/Delete',
+                data: {
+                    id: row.Id
+                },
+                method: 'post',
+                success: function(data, textStatus, jqXHR) {
+                    if (data.status === 1) {
+                        alert("Delete OK");
+                        table.bootstrapTable('refresh');
+                    }
+                }
+            });
+        }
+    }
+
+    function Edit(e, value, row, index) {
+        window.location.href = "/Home/Edit?id=" + row.Id;
+    }
 });
     
